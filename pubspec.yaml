@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   camerax: ^0.0.1
+  huawei_scan: ^1.2.2
 
 dev_dependencies:
   flutter_test:

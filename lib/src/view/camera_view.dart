@@ -1,7 +1,11 @@
 import 'dart:async';
+import 'dart:typed_data';
 
 import 'package:camerax/camerax.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:huawei_scan/HmsScanLibrary.dart';
+import 'package:scanner/main.dart';
 
 class CameraView extends StatefulWidget {
   @override
@@ -79,7 +83,11 @@ class _CameraViewState extends State<CameraView>
     }
     detecting = true;
     try {
-      // Analysize codes here...
+      final request =
+          DecodeRequest(data: image.data, scanType: HmsScanTypes.AllScanType);
+      final response = await HmsScanUtils.decodeWithBitmap(request);
+      Navigator.of(navigatorKey.currentContext)
+          .popAndPushNamed('show', arguments: response.showResult);
     } catch (e) {
       print(e);
     } finally {
@@ -151,4 +159,14 @@ class LinePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+}
+
+extension on CameraImage {
+  Uint8List get data {
+    final writer = WriteBuffer();
+    for (var plain in planes) {
+      writer.putUint8List(plain.bytes);
+    }
+    return writer.done().buffer.asUint8List();
+  }
 }

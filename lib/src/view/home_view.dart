@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:huawei_scan/HmsScanLibrary.dart';
 
 class HomeView extends StatelessWidget {
   @override
@@ -45,7 +46,13 @@ class HomeView extends StatelessWidget {
           Icons.camera,
           color: Colors.white,
         ),
-        onPressed: () => Navigator.of(context).pushNamed('camerax'),
+        onPressed: () async {
+          final request =
+              DefaultViewRequest(scanType: HmsScanTypes.AllScanType);
+          final response = await HmsScanUtils.startDefaultView(request);
+          Navigator.of(context)
+              .pushNamed("show", arguments: response.showResult);
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
