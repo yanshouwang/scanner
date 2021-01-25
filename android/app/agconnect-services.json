@@ -1,0 +1,14 @@
+{
+	"client":{
+		"appType":"1",
+		"cp_id":"890086000300384059",
+		"product_id":"9105385871708358341",
+		"client_id":"262206107265532928",
+		"client_secret":"ADC0640D1622E115132A18BAC1587B7491CA84A381C8CD063B1E20E9CF768C41",
+		"project_id":"9105385871708358341",
+		"app_id":"103752993",
+		"api_key":"CgB6e3x9+Aa8lTRlHUyJRYgAvEO0MOxxgoEB0I1u4Vygc6BForHJJXyAN9JF3IVvctEMwJDkaTO6vtY/r9yNRuW6",
+		"package_name":"dev.yanshouwang.scanner"
+	},
+	"configuration_version":"1.0"
+}
